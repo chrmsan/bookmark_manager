@@ -1,0 +1,35 @@
+As a web user, 
+So I can get ideas for the best of the web, 
+I'd like to see a list of top links.
+
+As a web user,
+So that I can quickly find web sites I recently bookmarked
+I would like to see links in descending chronological order
+
+As a web user, 
+so I can keep track of a link I like, 
+I'd like to save it to a database
+
+As a web user,
+So I can be tell people what kind of link I'm posting,
+I'd like to add a tag to my link.
+
+As a web user,
+So I can be specific about the type of links I'd like to see,
+I'd like to filter the list of links by tags.
+
+
+
+# DOMAIN MODEL
+
+Display class
+ - Organise by: tag, alphabetically, date added
+
+Link class
+ - add tag
+ - remove tag
+
+Tag class
+ - category
+ - name
+ - time added
