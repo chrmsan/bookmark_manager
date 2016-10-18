@@ -7,6 +7,8 @@ class Link
   property :id, Serial
   property :title, String
   property :url, String
-  
-  
-end
+end  
+
+  DataMapper.setup(:default, 'postgres://ubuntu:password@localhost/bookmark_manager_test')
+  DataMapper.finalize
+  DataMapper.auto_upgrade!
