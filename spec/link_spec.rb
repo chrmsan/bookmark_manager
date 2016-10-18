@@ -1,5 +1,3 @@
-require_relative 'spec_helper'
-
 feature "At homepage" do
 	scenario "I can see my favourite links on the homepage" do
 	Link.create(url: 'http://www.google.com', title: 'Google')
