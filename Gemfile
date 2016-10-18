@@ -6,7 +6,7 @@ gem 'sinatra'
 gem 'dm-postgres-adapter'
 gem 'data_mapper'
 gem 'database_cleaner'
-gem 'pg'
+gem 'pg', :group => 'production'
 gem 'rake'
 
 group :test do
