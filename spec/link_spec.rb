@@ -1,3 +1,7 @@
+require 'capybara/rspec'
+require './app/app'
+Capybara.app = BookmarkManager
+
 feature "At homepage" do
 	scenario "I can see my favourite links on the homepage" do
 	Link.create(url: 'http://www.google.com', title: 'Google')
