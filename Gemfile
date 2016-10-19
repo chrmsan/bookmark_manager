@@ -8,6 +8,8 @@ gem 'data_mapper'
 gem 'database_cleaner'
 gem 'pg'
 gem 'rake'
-gem 'capybara'
-gem 'rspec'
-gem 'rspec-sinatra'
+
+group :test do
+  gem 'capybara'
+  gem 'rspec'
+end
