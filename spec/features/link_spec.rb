@@ -1,6 +1,4 @@
-require 'capybara/rspec'
-require './app/app'
-Capybara.app = BookmarkManager
+require 'spec_helper'
 
 feature "At homepage" do
 	scenario "I can see my favourite links on the homepage" do
