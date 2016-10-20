@@ -5,8 +5,6 @@ require_relative 'data_mapper_setup'
 
 class BookmarkManager < Sinatra::Base
 
-  attr_reader :first_name
-
   enable :sessions
   set :session_secret, 'super secret'
 
@@ -19,11 +17,11 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/welcome' do
-    #welcome new users
     user = User.create(first_name: params[:first_name],
                        last_name: params[:last_name],
                        email: params[:email],
-                       password: params[:password])
+                       password: params[:password],
+                       password_confirmation: params[:password_confirmation])
     session[:user_id] = user.id
     redirect '/links'
   end
