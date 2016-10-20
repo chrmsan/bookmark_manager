@@ -32,9 +32,15 @@ feature "filter links by tag" do
       expect(page).to have_content('Hit for 6')
     end
   end
+end
 
-  scenario 'return' do
-    @test_link = Link.create(url: 'http://www.sport.com', title: 'Howzatt', tags: [Tag.first_or_create(name: 'cricket, news')])
-    expect(@test_link.tags).to eq ['cricket', 'news']
+feature 'add multiple tags' do
+  scenario 'returns all tags for a link' do
+    visit '/links/new'
+    fill_in "title", :with => 'Howzatt'
+    fill_in "url", :with => 'http://www.sport.com'
+    fill_in "tags", :with => 'cricket, news'
+    click_button "Add Link"
+    expect(Link.first.tags.map(&:name)).to include('cricket', 'news')
   end
 end
