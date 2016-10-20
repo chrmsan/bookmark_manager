@@ -11,13 +11,14 @@ feature 'sign in' do
   it 'allows a new user to sign up' do
     fill_in 'password_confirmation', with: '1234'
     expect{ click_button 'Sign up' }.to change{ User.all.count }.by(1)
-    expect(page).to have_content 'WELCOME, Alan'
+    expect(page).to have_content 'Welcome, Alan'
     expect(User.first.email).to eq('alan@nufc.com')
   end
 
-  it 'informs the user if they have not enetered two identical passwords' do
+  it 'does not allows an account to be created if specified passwords do not match' do
     fill_in 'password_confirmation', with: '123'
-    # expect{ click_button 'Sign up' }.to raise_error 'The passwords entered do not match'
     expect{ click_button 'Sign up' }.to change{ User.all.count }.by(0)
+    expect(current_path).to eq '/users/authenticate'
+    expect(page).to have_content 'Password and confirmation password do not match'
   end
 end

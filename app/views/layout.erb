@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Amazing Bookmark Manager</title>
+    <title>A Lovely Bookmark Manager</title>
   </head>
 
   <body>
     <% if current_user %>
-      WELCOME, <%= current_user.first_name %>
+      <h1> Welcome, <%= current_user.first_name %> </h1>
+    <% end %>
+    <% if flash[:differents_passwords] %>
+      <div id='notice'> <%= flash[:differents_passwords] %> </div>
     <% end %>
     <%= yield %>
   </body>
