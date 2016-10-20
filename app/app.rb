@@ -6,7 +6,18 @@ require_relative 'data_mapper_setup'
 class BookmarkManager < Sinatra::Base
 
   get '/' do
-    redirect '/links'
+    erb :'links/welcome'
+  end
+
+  get '/register' do
+    erb :'links/register'
+  end
+
+  post '/welcome' do
+    user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
+    @links = Link.all
+    @name = params[:first_name]
+    erb :'links/index'
   end
 
   get '/links' do
@@ -28,11 +39,17 @@ class BookmarkManager < Sinatra::Base
     redirect '/links'
   end
 
-  post '/tags/:name' do
-    tag = Tag.first(name: params[:name])
+  get '/tags/:filter' do
+    tag = Tag.first(name: params[:filter])
     @links = tag ? tag.links : []
     erb :'links/index'
   end
+  #
+  # get '/tags/:filter' do
+  #   tag = Tag.first(name: params[:filter])
+  #   @links = tag ? tag.links : []
+  #   erb :'links/index'
+  # end
 
 
   # start the server if ruby file executed directly

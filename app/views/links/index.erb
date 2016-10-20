@@ -1,4 +1,8 @@
+<h1> Welcome, <%= @name %> </h1>
+
+
 <h1> Links </h1>
+
 
 <form action="/links/new">
   <input type="submit" value="Create New Bookmark">
@@ -13,9 +17,9 @@
   <% end %>
 </ul>
 
-<form action="/tags/:name" method="post">
-  <label for="name">
-    <input type="text" name="name">
+<!-- <form action="/tags/:filter" method="get">
+  <label for="filter">
+    <input type="text" name="filter">
   </label>
       <input type="submit" value="Filter">
-</form>
+</form> -->
