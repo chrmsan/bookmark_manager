@@ -15,6 +15,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/users/register' do
+    @user = User.new
     erb :'users/register'
   end
 
