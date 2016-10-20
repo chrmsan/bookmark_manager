@@ -5,6 +5,9 @@ require_relative 'data_mapper_setup'
 
 class BookmarkManager < Sinatra::Base
 
+  enable :sessions
+  set :session_secret, 'super secret'
+
   get '/' do
     erb :'links/welcome'
   end
@@ -14,9 +17,14 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/welcome' do
-    user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
+    #welcome new users
+    user = User.create(first_name: params[:first_name],
+                       last_name: params[:last_name],
+                       email: params[:email],
+                       password: params[:password])
+    session[:user_id] = user.id
     @links = Link.all
-    @name = params[:first_name]
+    @name = user.first_name
     erb :'links/index'
   end
 
@@ -44,13 +52,6 @@ class BookmarkManager < Sinatra::Base
     @links = tag ? tag.links : []
     erb :'links/index'
   end
-  #
-  # get '/tags/:filter' do
-  #   tag = Tag.first(name: params[:filter])
-  #   @links = tag ? tag.links : []
-  #   erb :'links/index'
-  # end
-
 
   # start the server if ruby file executed directly
   run! if app_file == $0
