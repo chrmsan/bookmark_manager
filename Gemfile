@@ -8,6 +8,7 @@ gem 'data_mapper'
 gem 'database_cleaner'
 gem 'pg'
 gem 'rake'
+gem 'rerun'
 
 group :test do
   gem 'capybara'
