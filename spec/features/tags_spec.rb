@@ -33,4 +33,8 @@ feature "filter links by tag" do
     end
   end
 
+  scenario 'return' do
+    @test_link = Link.create(url: 'http://www.sport.com', title: 'Howzatt', tags: [Tag.first_or_create(name: 'cricket, news')])
+    expect(@test_link.tags).to eq ['cricket', 'news']
+  end
 end
