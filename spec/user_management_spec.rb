@@ -7,7 +7,6 @@ feature 'User sign up' do
     expect(User.first.email).to eq('alice@example.com')
   end
 
-
   scenario 'with a password that does not match' do
     expect { sign_up(password_confirmation: 'wrong') }.not_to change(User, :count)
     expect(current_path).to eq('/users')
@@ -19,7 +18,17 @@ feature 'User sign up' do
   end
 
   scenario "can't sign up without valid email" do
-    expect { sign_up(email: "no-way")}.not_to change(User, :count)
+    expect { sign_up(email: "no-way@email")}.not_to change(User, :count)
+  end
+
+  scenario "can't use an existing user's email" do
+    sign_up
+    expect {sign_up}.not_to change(User, :count)
+  end
+
+  scenario "error message if uses existing email" do
+    2.times { sign_up }
+    expect(page).to have_content 'That email is already registered'
   end
 
 end
