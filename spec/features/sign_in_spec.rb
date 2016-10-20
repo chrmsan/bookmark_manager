@@ -7,7 +7,7 @@ feature 'sign in' do
     fill_in 'email', with: 'alan@nufc.com'
     fill_in 'password', with: 'NUFC \'til I die'
     expect{ click_button 'Sign up' }.to change{ User.all.count }.by(1)
-    expect(page).to have_content 'Welcome, Alan'
+    expect(page).to have_content 'WELCOME, Alan'
     expect(User.first.email).to eq('alan@nufc.com')
   end
 end
