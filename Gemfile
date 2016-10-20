@@ -9,6 +9,7 @@ gem 'database_cleaner'
 gem 'pg'
 gem 'rake'
 gem 'rerun'
+gem 'bcrypt'
 
 group :test do
   gem 'capybara'
