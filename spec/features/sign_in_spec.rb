@@ -15,7 +15,7 @@ feature 'sign in' do
     expect(User.first.email).to eq('alan@nufc.com')
   end
 
-  it 'does not allows an account to be created if specified passwords do not match' do
+  it 'does not allow an account to be created if the specified passwords do not match' do
     fill_in 'password_confirmation', with: '123'
     expect{ click_button 'Sign up' }.to change{ User.all.count }.by(0)
     expect(current_path).to eq '/users/authenticate'
