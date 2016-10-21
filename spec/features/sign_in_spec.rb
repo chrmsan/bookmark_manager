@@ -22,7 +22,7 @@ feature 'sign in' do
     fill_in 'password_confirmation', with: '123'
     expect{ click_button 'Sign up' }.to change{ User.all.count }.by(0)
     expect(current_path).to eq '/users/authenticate'
-    expect(page).to have_content 'Password and confirmation password do not match'
+    expect(page).to have_content 'Password does not match the confirmation'
   end
 
   it 'does not allow the user to sign in without entering something in the email field' do
@@ -38,10 +38,12 @@ feature 'sign in' do
     fill_in 'password', with: '1234'
     fill_in 'password_confirmation', with: '1234'
     click_button 'Sign up'
+    visit '/'
+    click_button 'Register'
     fill_in 'email', with: 'alan@nufc.com'
     fill_in 'password', with: '1234'
     fill_in 'password_confirmation', with: '1234'
     expect { click_button 'Sign up' }.to_not change(User, :count)
-    expect(page).to have_content('You already have an account, you twat!')
-  end 
+    expect(page).to have_content('Email is already taken')
+  end
 end
