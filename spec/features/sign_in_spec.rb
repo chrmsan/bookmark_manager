@@ -26,7 +26,7 @@ feature 'sign in' do
   end
 
   it 'does not allow the user to sign in without entering something in the email field' do
-    fill_in 'email', with: ''
+    fill_in 'email', with: nil
     fill_in 'password', with: '1234'
     fill_in 'password', with: '1234'
     click_button 'Sign up'
