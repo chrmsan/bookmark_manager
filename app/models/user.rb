@@ -7,6 +7,7 @@ class User
   attr_accessor :password_confirmation
 
   validates_confirmation_of :password
+  validates_presence_of :email
 
   # has n, :links, through: Resource
 
