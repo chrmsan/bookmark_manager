@@ -19,6 +19,10 @@ class BookmarkManager < Sinatra::Base
     erb :'users/register'
   end
 
+  get '/users/sign_in' do
+    erb :'users/sign_in'
+  end
+
   post '/users/authenticate' do
     @user = User.create(first_name: params[:first_name],
                        last_name: params[:last_name],
