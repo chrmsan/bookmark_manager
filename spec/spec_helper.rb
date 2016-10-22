@@ -32,7 +32,7 @@ Capybara.app = BookmarkManager
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
     # Everything in this block runs once before all the tests run
-  config.before(:suite) do
+  config.beforesuite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
